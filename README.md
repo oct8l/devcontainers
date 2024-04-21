@@ -3,7 +3,7 @@
 
 ## What is this repository for?
 
-This repository will be the codebase for what is used to generate some (devcontainers)[https://code.visualstudio.com/docs/devcontainers/containers].
+This repository will be the codebase for what is used to generate some [dev containers](https://code.visualstudio.com/docs/devcontainers/containers).
 
 I'm just getting started with them, so there's probably not going to be much to see here yet.
 
