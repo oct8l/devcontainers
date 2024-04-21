@@ -1,10 +1,10 @@
 image: atlassian/default-image:4
 
+clone:
+  enabled: false
+
 pipelines:
   default:
-    - step:
-        clone:
-          enabled: true
     - step:
         name: Build and push the base Docker image
         services:
