@@ -10,7 +10,7 @@ pipelines:
         services:
           - docker
         script:
-          - export PATH=/usr/bin:$PATH
+          - export DOCKER_BUILDKIT=0
           - echo "Logging into Docker Hub"
           - docker login -u "$dockername" --password-stdin <<< "$dockertoken"
           - echo "Installing the devcontainer cli"
