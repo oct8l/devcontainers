@@ -1,0 +1,4 @@
+{
+	"name": "Docker-in-Docker with Node.js",
+	"image": "oct8l/devcontainers:dind-latest"
+    }

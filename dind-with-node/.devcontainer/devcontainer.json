@@ -1,0 +1,19 @@
+{
+	"name": "Docker-in-Docker with Node.js",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18",
+	"customizations": {
+	  "vscode": {
+		"extensions": [
+		  "dbaeumer.vscode-eslint",
+		  "esbenp.prettier-vscode",
+		  "streetsidesoftware.code-spell-checker"
+		]
+	  }
+	},
+	"remoteUser": "root",
+	"features": {
+	  "ghcr.io/devcontainers-contrib/features/devcontainers-cli:1": {},
+	  "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"]
+  }

@@ -1,29 +1,18 @@
-# README #
+# Dev Containers!
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+## What is this repository for?
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+This repository will be the codebase for what is used to generate some (devcontainers)[https://code.visualstudio.com/docs/devcontainers/containers].
 
-### How do I get set up? ###
+I'm just getting started with them, so there's probably not going to be much to see here yet.
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+## How can I use it?
 
-### Contribution guidelines ###
+The repo is designed assuming it will be used with [VS Code](https://code.visualstudio.com/), and right now, my dev environment is on a Windows machine running WSL2 and Docker Desktop.
 
-* Writing tests
-* Code review
-* Other guidelines
+First, you'll want to login to a registry using the BASH scripts under the `registry-login` folder.
 
-### Who do I talk to? ###
+Next, you'll want to run the build scripts under the `build-scripts` folder. It's assumed that these will be ran from the top level of the repo (where this README is located).
 
-* Repo owner or admin
-* Other community or team contact
+It should then build and push images like magic!
