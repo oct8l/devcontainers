@@ -6,7 +6,7 @@ clone:
 pipelines:
   default:
     - step:
-        name: Build and push the base Docker image
+        name: Build and push the main builder image
         services:
           - docker
         script:
@@ -23,3 +23,22 @@ pipelines:
           changesets:
             includePaths:
               - "dind-with-node/.devcontainer/devcontainer.json"
+    - step:
+        name: Build and push the Python and Selenium image
+        services:
+          - docker
+        script:
+          - echo "Logging into Docker Hub"
+          - docker login -u "$dockername" --password-stdin <<< "$dockertoken"
+          - echo "Installing the devcontainer cli"
+          - npm install -g @devcontainers/cli
+          - echo "Building the container"
+          - devcontainer build --workspace-folder ./python-selenium --image-name oct8l/devcontainers:python-selenium-latest
+          - echo "Pushing Docker image to Docker Hub"
+          - docker push oct8l/devcontainers:python-selenium-latest
+        trigger: automatic
+        condition:
+          changesets:
+            includePaths:
+              - "python-selenium/.devcontainer/devcontainer.json"
+              - "python-selenium/Dockerfile"
