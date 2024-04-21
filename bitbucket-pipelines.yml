@@ -10,12 +10,12 @@ pipelines:
         services:
           - docker
         script:
-          - echo "Logging into Docker Hub"
-          - docker login -u "$dockername" --password-stdin <<< "$dockertoken"
           - echo "Installing the devcontainer cli"
           - npm install -g @devcontainers/cli
           - echo "Building the container"
           - devcontainer build --workspace-folder ./dind-with-node --image-name oct8l/dind-with-node:latest:dind-latest
+          - echo "Logging into Docker Hub"
+          - docker login -u "$dockername" --password-stdin <<< "$dockertoken"
           - echo "Pushing Docker image to Docker Hub"
           - docker push oct8l/devcontainers:dind-latest
         trigger: automatic
@@ -28,12 +28,12 @@ pipelines:
         services:
           - docker
         script:
-          - echo "Logging into Docker Hub"
-          - docker login -u "$dockername" --password-stdin <<< "$dockertoken"
           - echo "Installing the devcontainer cli"
           - npm install -g @devcontainers/cli
           - echo "Building the container"
           - devcontainer build --workspace-folder ./python-selenium --image-name oct8l/devcontainers:python-selenium-latest
+          - echo "Logging into Docker Hub"
+          - docker login -u "$dockername" --password-stdin <<< "$dockertoken"
           - echo "Pushing Docker image to Docker Hub"
           - docker push oct8l/devcontainers:python-selenium-latest
         trigger: automatic
