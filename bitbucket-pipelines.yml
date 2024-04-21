@@ -1,0 +1,20 @@
+image: atlassian/default-image:4
+
+pipelines:
+  default:
+    - step:
+        clone:
+          enabled: true
+    - step:
+        name: Build and push the base Docker image
+        services:
+          - docker
+        script:
+          - echo "Logging into Docker Hub"
+          - docker login -u "$dockername" --password-stdin <<< "$dockertoken"
+          - echo "Installing the devcontainer cli"
+          - npm install -g @devcontainers/cli
+          - echo "Building the container"
+          - devcontainer build --workspace-folder ./dind-with-node --push true --image-name oct8l/dind-with-node:latest
+          - echo "Pushing Docker image to Docker Hub"
+          - docker push oct8l/devcontainers:dind-latest
