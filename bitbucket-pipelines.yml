@@ -15,6 +15,11 @@ pipelines:
           - echo "Installing the devcontainer cli"
           - npm install -g @devcontainers/cli
           - echo "Building the container"
-          - devcontainer build --workspace-folder ./dind-with-node --image-name oct8l/devcontainers:dind-latest
+          - devcontainer build --workspace-folder ./dind-with-node --image-name oct8l/dind-with-node:latest:dind-latest
           - echo "Pushing Docker image to Docker Hub"
           - docker push oct8l/devcontainers:dind-latest
+        trigger: automatic
+        condition:
+          changesets:
+            includePaths:
+              - "dind-with-node/.devcontainer/devcontainer.json"
