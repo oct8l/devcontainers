@@ -16,13 +16,31 @@
 			"donjayamanne.python-extension-pack",
 			"ms-python.python",
 			"ms-python.vscode-pylint"
-		  ]
+		  ],
+          "settings": {
+            "python.defaultInterpreterPath": "/usr/local/bin/python"
+        }
 		}
 	  },
 
 	"features": {
-		"ghcr.io/devcontainers/features/python:1": {},
-		"ghcr.io/devcontainers-contrib/features/pylint:2": {}
-	}
+		"ghcr.io/devcontainers-contrib/features/pylint:2": {},
+        "ghcr.io/devcontainers/features/common-utils:2":{
+            "installZsh": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        }
+	},
+
+    "remoteUser": "vscode",
+
+    "postCreateCommand": "printf 'eval \"$(direnv hook bash)\" >> ~/.bashrc && printf 'eval \"$(direnv hook zsh)\" >> ~/.zshrc"
 
 }
+

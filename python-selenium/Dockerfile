@@ -1,14 +1,16 @@
-FROM mcr.microsoft.com/devcontainers/python:1-3.12-bullseye
+FROM python:3.12.3-slim
 
-# Set the working directory
-WORKDIR /app/
+# Temporary: Upgrade python packages due to https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-40897 and https://github.com/advisories/GHSA-2mqj-m65w-jghx
+# They are installed by the base image (python) which does not have the patch.
+RUN python3 -m pip install --upgrade \
+    'setuptools<=69.0.3' \
+    'gitpython<=3.1.41'
 
-# Install required Python packages
-RUN pip install --upgrade --no-cache-dir selenium gspread oauth2client
-
-# Install Chromium
+# Install packages, remove imagemagick, symlink Chromium
 RUN apt-get update && \
-    apt-get install -y wget chromium unzip && \
+    apt-get install -y wget chromium unzip direnv && \
+    # Remove imagemagick due to https://security-tracker.debian.org/tracker/CVE-2019-10131
+    apt-get purge -y imagemagick imagemagick-6-common && \
     rm -rf /var/lib/apt/lists/* /var/log/dpkg.log /var/log/apt/*.log && \
     ln -s /usr/bin/chromium /usr/bin/google-chrome
 
