@@ -43,3 +43,5 @@
     "postCreateCommand": "printf 'eval \"$(direnv hook bash)\" >> ~/.bashrc && printf 'eval \"$(direnv hook zsh)\" >> ~/.zshrc"
 
 }
+
+
