@@ -36,13 +36,6 @@ pipelines:
           runs-on:
             - self.hosted
           script:
-            - export DOCKER_BUILDKIT=1
-            - docker buildx create --name builder123 --use
-            - docker buildx inspect --bootstrap
-            - echo "Some debugging output"
-            - docker images
-            - docker buildx version
-            - docker buildx ls
             - echo "Installing the devcontainer cli"
             - npm install -g @devcontainers/cli
             - echo "Logging into Docker Hub"
