@@ -7,6 +7,8 @@ on:
       - "python-selenium/.devcontainer/devcontainer.json"
       - "python-selenium/Dockerfile"
   workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * 3' # Run weekly at 8 PM Central Time
 
 jobs:
   build-and-push-main-builder:
