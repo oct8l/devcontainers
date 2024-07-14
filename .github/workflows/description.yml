@@ -1,4 +1,4 @@
-name: Container builds
+name: Description update
 
 on:
   push:
