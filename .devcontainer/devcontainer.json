@@ -1,4 +1,4 @@
 {
-	"name": "Main builder",
-	"image": "oct8l/devcontainers:dind-latest"
-    }
+    "name": "Main builder",
+    "image": "oct8l/devcontainers:dind-latest"
+}
