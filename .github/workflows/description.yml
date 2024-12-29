@@ -2,8 +2,11 @@ name: Description update
 
 on:
   push:
+    branches:
+      - main
     paths:
-      - "README.md"
+      - README.md
+      - .github/workflows/description.yml
   workflow_dispatch:
 
 jobs:
@@ -19,3 +22,5 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
           repository: ${{ secrets.DOCKER_USERNAME }}/devcontainers
+          readme-filepath: ./README.md
+          short-description: ${{ github.event.repository.description }}
