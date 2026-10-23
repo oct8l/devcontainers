@@ -1,4 +1,4 @@
-FROM ruby:4.0-slim-bookworm@sha256:ff110532f77ece9a77d75159600193852442509aa5f1314beb3c99dc4b3298b4
+FROM ruby:4.0-slim-bookworm@sha256:16af53d3b3909a6ec074ca7e208aac3b912b04b3da80764e7fda9b9640f68696
 
 # Install essential packages
 RUN apt-get update && apt-get install -y \
